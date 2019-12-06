@@ -1,0 +1,38 @@
+From f6478067ae04c9e682c2c2eaf6a21a88d13422f9 Mon Sep 17 00:00:00 2001
+From: ElXreno <elxreno@gmail.com>
+Date: Fri, 6 Dec 2019 13:13:18 +0300
+Subject: [PATCH] Fixed installation on other than Ubuntu GNU/Linux
+ distributions
+
+---
+ CMakeLists.txt | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 504a74047..b0b4b0c99 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1413,13 +1413,14 @@ if(TARGET_OS STREQUAL "windows")
+ endif()
+ 
+ if(NOT DEV)
+-  install(DIRECTORY data DESTINATION share/ddnet COMPONENT data)
+-  install(TARGETS ${TARGET_CLIENT} DESTINATION bin COMPONENT client)
+-  install(TARGETS ${TARGET_SERVER} DESTINATION bin COMPONENT server)
+-  install(TARGETS ${TARGETS_TOOLS} DESTINATION lib/ddnet COMPONENT tools)
+-  install(FILES other/ddnet.desktop DESTINATION share/applications COMPONENT client)
++  include(GNUInstallDirs)
++  install(DIRECTORY data DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/ddnet COMPONENT data)
++  install(TARGETS ${TARGET_CLIENT} DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT client)
++  install(TARGETS ${TARGET_SERVER} DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT server)
++  install(TARGETS ${TARGETS_TOOLS} DESTINATION ${CMAKE_INSTALL_LIBDIR}/ddnet COMPONENT tools)
++  install(FILES other/ddnet.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications COMPONENT client)
+   foreach(SIZE 16 32 48 128 256 512)
+-    install(FILES other/icons/DDNet_${SIZE}x${SIZE}x32.png DESTINATION share/icons/hicolor/${SIZE}x${SIZE}/apps RENAME ddnet.png COMPONENT client)
++    install(FILES other/icons/DDNet_${SIZE}x${SIZE}x32.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/${SIZE}x${SIZE}/apps RENAME ddnet.png COMPONENT client)
+   endforeach()
+ endif()
+ 
+-- 
+2.24.0
+
