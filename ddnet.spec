@@ -17,6 +17,7 @@ Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{vers
 Source1:        https://github.com/ddnet/ddnet-maps/archive/%{commit_maps}/%{name}-maps-%{shortcommit_maps}.tar.gz
 
 Patch0:         0001-Fixed-installation-on-other-than-Ubuntu-GNU-Linux-di.patch
+Patch1:         0002-Disabled-network-lookup-test.patch
 
 BuildRequires:  desktop-file-utils
 
@@ -96,7 +97,7 @@ cp -a %{name}-maps-%{commit_maps}/types %{buildroot}%{_datadir}/%{name}-maps
 
 
 %check
-%_make run_tests
+%make_build run_tests
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
@@ -113,12 +114,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_bindir}/DDNet-Server
 
 %files data
-%dir %{_datadir}/%{name}/
+%{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %files maps
-%dir %{_datadir}/%{name}-maps/
+%{_datadir}/%{name}-maps/
 
 
 %changelog
