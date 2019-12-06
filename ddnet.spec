@@ -8,7 +8,7 @@
 
 Name:           ddnet
 Version:        12.7.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 License:        ASL 2.0 and CC-BY-SA
@@ -17,6 +17,8 @@ Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{vers
 Source1:        https://github.com/ddnet/ddnet-maps/archive/%{commit_maps}/%{name}-maps-%{shortcommit_maps}.tar.gz
 
 Patch0:         0001-Fixed-installation-on-other-than-Ubuntu-GNU-Linux-di.patch
+
+BuildRequires:  desktop-file-utils
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -95,6 +97,7 @@ cp -a %{name}-maps-%{commit_maps}/types %{buildroot}%{_datadir}/%{name}-maps
 
 %check
 %_make run_tests
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %files
@@ -119,6 +122,9 @@ cp -a %{name}-maps-%{commit_maps}/types %{buildroot}%{_datadir}/%{name}-maps
 
 
 %changelog
+* Fri Dec 06 2019 Artem Polishchuk <ego.cordatus@gmail.com> - 12.7.3-3
+- Tim was here :)
+
 * Fri Dec 06 2019 ElXreno <elxreno@gmail.com> - 12.7.3-2
 - More docs, tests, and additions
 
