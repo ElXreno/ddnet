@@ -8,7 +8,7 @@
 
 Name:           ddnet
 Version:        12.7.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 License:        ASL 2.0 and CC-BY-SA
@@ -36,6 +36,7 @@ BuildRequires:  wavpack-devel
 BuildRequires:  zlib-devel
 
 Requires:       hicolor-icon-theme
+Requires:       %{name}-data = %{version}-%{release}
 
 
 %description
@@ -51,6 +52,16 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Standalone server for %{name}.
 
 
+%package        data
+Summary:        Data files for %{name}
+
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+BuildArch:      noarch
+
+%description    data
+Data files for %{name}.
+
+
 %package        maps
 Summary:        Additional maps for %{name}
 
@@ -58,7 +69,7 @@ Version:        %{date}git%{shortcommit_maps}
 BuildArch:      noarch
 
 %description    maps
-Additional maps for  %{name}.
+Additional maps for %{name}.
 
 
 %prep
@@ -82,26 +93,34 @@ mkdir -p %{buildroot}%{_datadir}/%{name}-maps
 cp -a %{name}-maps-%{commit_maps}/types %{buildroot}%{_datadir}/%{name}-maps
 
 
+%check
+%_make run_tests
+
+
 %files
 %license license.txt
-%doc README.md
+%doc README.md man/DDNet.6
 %{_bindir}/DDNet
-%{_libdir}/%{name}/*
-
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/%{name}/
-%{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_libdir}/%{name}/
 
 
 %files server
 %license license.txt
-%doc README.md
+%doc README.md man/DDNet-Server.6
 %{_bindir}/DDNet-Server
 
+%files data
+%dir %{_datadir}/%{name}/
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/%{name}.png
+
 %files maps
-%{_datadir}/%{name}-maps/
+%dir %{_datadir}/%{name}-maps/
 
 
 %changelog
+* Fri Dec 06 2019 ElXreno <elxreno@gmail.com> - 12.7.3-2
+- More docs, tests, and additions
+
 * Sat Nov 30 2019 ElXreno <elxreno@gmail.com> - 12.7.3-1
 - Initial packaging
