@@ -8,7 +8,7 @@
 
 Name:           ddnet
 Version:        12.7.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 License:        ASL 2.0 and CC-BY-SA
@@ -17,7 +17,7 @@ Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{vers
 Source1:        https://github.com/ddnet/ddnet-maps/archive/%{commit_maps}/%{name}-maps-%{shortcommit_maps}.tar.gz
 
 Patch0:         0001-Fixed-installation-on-other-than-Ubuntu-GNU-Linux-di.patch
-# Patch1:         0002-Disabled-network-lookup-test.patch
+Patch1:         0002-Disabled-network-lookup-test.patch
 
 BuildRequires:  desktop-file-utils
 
@@ -26,6 +26,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  python
 
 BuildRequires:  freetype-devel
+BuildRequires:  git-core
 BuildRequires:  glew-devel
 BuildRequires:  gtest-devel
 BuildRequires:  libcurl-devel
@@ -58,7 +59,7 @@ Standalone server for %{name}.
 %package        data
 Summary:        Data files for %{name}
 
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
 %description    data
@@ -76,7 +77,7 @@ Additional maps for %{name}.
 
 
 %prep
-%autosetup
+%autosetup -S git
 touch CMakeLists.txt
 
 
@@ -98,7 +99,7 @@ cp -a %{name}-maps-%{commit_maps}/types %{buildroot}%{_datadir}/%{name}-maps
 
 %check
 # Disabled while I can't fix this
-# %make_build run_tests 
+# %%make_build run_tests 
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
@@ -124,6 +125,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Sat Dec 07 2019 Artem Polishchuk <ego.cordatus@gmail.com> - 12.7.3-5
+- Spec file fixes
+
 * Sat Dec 07 2019 ElXreno <elxreno@gmail.com> - 12.7.3-4
 - Updated maps to commit 950f9ec7a40814759c78241816903a236ab8de93
 
