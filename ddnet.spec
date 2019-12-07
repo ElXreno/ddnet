@@ -76,8 +76,8 @@ BuildArch:      noarch
 Additional maps for %{name}.
 
 
-%prep -S git
-%autosetup
+%prep
+%autosetup -S git
 touch CMakeLists.txt
 
 
