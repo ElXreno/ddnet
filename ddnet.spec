@@ -2,13 +2,13 @@
 %global optflags            %{optflags} -flto
 %global build_ldflags       %{build_ldflags} -flto
 
-%global commit_maps         3ae2b530fb45c0aee4f1991187679953c76cecf4
+%global commit_maps         950f9ec7a40814759c78241816903a236ab8de93
 %global shortcommit_maps    %(c=%{commit_maps}; echo ${c:0:7})
-%global date                20191130
+%global date                20191202
 
 Name:           ddnet
 Version:        12.7.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 License:        ASL 2.0 and CC-BY-SA
@@ -124,6 +124,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Sat Dec 07 2019 ElXreno <elxreno@gmail.com> - 12.7.3-4
+- Updated maps to commit 950f9ec7a40814759c78241816903a236ab8de93
+
 * Fri Dec 06 2019 Artem Polishchuk <ego.cordatus@gmail.com> - 12.7.3-3
 - Tim was here :)
 
