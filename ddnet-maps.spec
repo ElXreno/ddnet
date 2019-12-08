@@ -10,7 +10,7 @@ Summary:        Additional maps for ddnet
 # Wait for answer https://github.com/ddnet/ddnet-maps/issues/3
 License:        ?
 URL:            https://github.com/ddnet/ddnet-maps
-Source0:        %{url}/archive/%{commit}/%{name}-%{commit}.tar.gz
+Source0:        https://github.com/ddnet/ddnet-maps/archive/%{commit}/%{name}-%{commit}.tar.gz
 
 BuildArch:      noarch
 
