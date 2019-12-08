@@ -7,8 +7,9 @@ Version:        0
 Release:        1.%{date}git%{shortcommit}%{?dist}
 Summary:        Additional maps for ddnet
 
-# Wait for answer https://github.com/ddnet/ddnet-maps/issues/3
-License:        ?
+# Not sure, but I think it is nonfree
+# https://github.com/ddnet/ddnet-maps/issues/3
+License:        nonfree
 URL:            https://github.com/ddnet/ddnet-maps
 Source0:        https://github.com/ddnet/ddnet-maps/archive/%{commit}/%{name}-%{commit}.tar.gz
 
