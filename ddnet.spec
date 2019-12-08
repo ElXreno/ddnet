@@ -1,6 +1,10 @@
 ### Enable LTO
-%global optflags            %{optflags} -flto
-%global build_ldflags       %{build_ldflags} -flto
+%bcond_without lto
+
+%if %{with lto}
+%global optflags        %{optflags} -flto
+%global build_ldflags   %{build_ldflags} -flto
+%endif
 
 Name:           ddnet
 Version:        12.7.3
