@@ -11,8 +11,8 @@ License:        ASL 2.0 and CC-BY-SA
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 
-Patch0:         0001-Fixed-installation-on-other-than-Ubuntu-GNU-Linux-di.patch
-Patch1:         0002-Disabled-network-lookup-test.patch
+Patch0:         0001_ddnet_Fixed-installation-on-other-than-Ubuntu-GNU-Linux-di.patch
+Patch1:         0002_ddnet_Disabled-network-lookup-test.patch
 
 BuildRequires:  desktop-file-utils
 
