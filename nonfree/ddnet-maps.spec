@@ -1,10 +1,10 @@
-%global commit         950f9ec7a40814759c78241816903a236ab8de93
+%global commit         8e66897be14e62d705419890037e7e06868e88b7
 %global shortcommit    %(c=%{commit}; echo ${c:0:7})
-%global date           20191202
+%global date           20191218
 
 Name:           ddnet-maps
 Version:        0
-Release:        1.%{date}git%{shortcommit}%{?dist}
+Release:        2.%{date}git%{shortcommit}%{?dist}
 Summary:        Additional maps for ddnet
 
 # Not sure, but I think it is nonfree
@@ -36,5 +36,8 @@ cp -a types %{buildroot}%{_datadir}/%{name}
 
 
 %changelog
+* Wed Dec 18 2019 ElXreno <elxreno@gmail.com> - 0-2.20191218git8e66897
+- Updated to commit 8e66897be14e62d705419890037e7e06868e88b7
+
 * Sun Dec  8 2019 ElXreno <elxreno@gmail.com> - 0-1.20191202git3ae2b53
 - Initial packaging from ddnet.spec
