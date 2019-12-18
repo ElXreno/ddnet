@@ -7,16 +7,15 @@
 %endif
 
 Name:           ddnet
-Version:        12.7.3
-Release:        6%{?dist}
+Version:        12.8
+Release:        1%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 License:        ASL 2.0 and CC-BY-SA
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 
-Patch0:         0001_ddnet_Fixed-installation-on-other-than-Ubuntu-GNU-Linux-di.patch
-Patch1:         0002_ddnet_Disabled-network-lookup-test.patch
+Patch1:         0001_ddnet_Disabled-network-lookup-test.patch
 
 BuildRequires:  desktop-file-utils
 
@@ -104,6 +103,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Wed Dec 18 2019 ElXreno <elxreno@gmail.com> - 12.8-1
+- Updated to version 12.8
+
 * Sun Dec 08 2019 ElXreno <elxreno@gmail.com> - 12.7.3-6
 - Extracted ddnet-maps into ddnet-maps.spec, enabled tests
 
