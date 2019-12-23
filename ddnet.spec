@@ -7,7 +7,7 @@
 %endif
 
 Name:           ddnet
-Version:        12.8
+Version:        12.8.1
 Release:        1%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
@@ -103,6 +103,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Mon Dec 23 2019 ElXreno <elxreno@gmail.com> - 12.8.1-1
+- Updated to version 12.8.1
+
 * Wed Dec 18 2019 ElXreno <elxreno@gmail.com> - 12.8-1
 - Updated to version 12.8
 
