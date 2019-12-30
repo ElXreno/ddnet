@@ -8,7 +8,7 @@
 
 Name:           ddnet
 Version:        12.8.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 License:        ASL 2.0 and CC-BY-SA
@@ -29,6 +29,7 @@ BuildRequires:  glew-devel
 BuildRequires:  gtest-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libogg-devel
+BuildRequires:  libwebsockets-devel
 BuildRequires:  openssl-devel
 BuildRequires:  opus-devel
 BuildRequires:  opusfile-devel
@@ -73,6 +74,7 @@ touch CMakeLists.txt
 %cmake3 \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPREFER_BUNDLED_LIBS=OFF \
+    -DWEBSOCKETS=ON \
     -DAUTOUPDATE=OFF
 %make_build
 
@@ -104,6 +106,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Mon Dec 30 2019 ElXreno <elxreno@gmail.com> - 12.8.1-2
+- WebSockets support for server
+
 * Mon Dec 23 2019 ElXreno <elxreno@gmail.com> - 12.8.1-1
 - Updated to version 12.8.1
 
