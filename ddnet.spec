@@ -54,6 +54,10 @@ Requires:       %{name}-data = %{version}-%{release}
 Provides:       bundled(dejavu-sans-cjkname-fonts)
 Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
 
+# TODO: Unbundle
+Provides:       bundled(json-parser)
+Provides:       bundled(md5)
+
 
 %description
 DDraceNetwork (DDNet) is an actively maintained version of DDRace,
@@ -85,6 +89,9 @@ Standalone server for %{name}.
 %prep
 %autosetup -S git
 touch CMakeLists.txt
+
+# Remove bundled stuff except md5...
+rm -rf src/engine/external/{glew,pnglite,wavpack,zlib}
 
 
 %build
