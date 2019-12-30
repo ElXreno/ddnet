@@ -28,22 +28,24 @@ BuildRequires:  ninja-build
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  git-core
 BuildRequires:  python
 
-BuildRequires:  freetype-devel
-BuildRequires:  git-core
-BuildRequires:  glew-devel
-BuildRequires:  gtest-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libogg-devel
-BuildRequires:  libwebsockets-devel
-BuildRequires:  openssl-devel
-BuildRequires:  opus-devel
-BuildRequires:  opusfile-devel
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(libwebsockets)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(wavpack)
+BuildRequires:  pkgconfig(zlib)
+
+# pkgconfig not available
 BuildRequires:  pnglite-devel
-BuildRequires:  SDL2-devel
-BuildRequires:  wavpack-devel
-BuildRequires:  zlib-devel
 
 Requires:       hicolor-icon-theme
 Requires:       %{name}-data = %{version}-%{release}
