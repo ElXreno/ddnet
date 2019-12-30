@@ -1,6 +1,9 @@
 ### Enable LTO
 %bcond_without lto
 
+### Enable Ninja build
+%bcond_without ninja_build
+
 %if %{with lto}
 %global optflags        %{optflags} -flto
 %global build_ldflags   %{build_ldflags} -flto
@@ -8,7 +11,7 @@
 
 Name:           ddnet
 Version:        12.8.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 License:        ASL 2.0 and CC-BY-SA
@@ -18,6 +21,10 @@ Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{vers
 Patch1:         0001_ddnet_Disabled-network-lookup-test.patch
 
 BuildRequires:  desktop-file-utils
+
+%if %{with ninja_build}
+BuildRequires:  ninja-build
+%endif
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -71,20 +78,39 @@ touch CMakeLists.txt
 
 
 %build
-%cmake3 \
+CMAKE3_EXTRA_FLAGS=""
+
+%if %{with ninja_build}
+CMAKE3_EXTRA_FLAGS="${CMAKE3_EXTRA_FLAGS} -GNinja"
+%endif
+
+%cmake3 ${CMAKE3_EXTRA_FLAGS} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPREFER_BUNDLED_LIBS=OFF \
     -DWEBSOCKETS=ON \
     -DAUTOUPDATE=OFF
+
+%if %{with ninja_build}
+%ninja_build
+%else
 %make_build
+%endif
 
 
 %install
+%if %{with ninja_build}
+%ninja_install
+%else
 %make_install
+%endif
 
 
 %check
+%if %{with ninja_build}
+%ninja_build run_tests
+%else
 %make_build run_tests
+%endif
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
@@ -106,6 +132,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 
 %changelog
+* Mon Dec 30 2019 ElXreno <elxreno@gmail.com> - 12.8.1-3
+- Ninja build
+
 * Mon Dec 30 2019 ElXreno <elxreno@gmail.com> - 12.8.1-2
 - WebSockets support for server
 
