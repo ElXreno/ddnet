@@ -48,6 +48,7 @@ BuildRequires:  zlib-devel
 Requires:       hicolor-icon-theme
 Requires:       %{name}-data = %{version}-%{release}
 
+# https://github.com/ddnet/ddnet/issues/2019
 Provides:       bundled(dejavu-sans-cjkname-fonts)
 Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
 
