@@ -54,7 +54,11 @@ Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
 
 
 %description
-DDraceNetwork, a cooperative racing mod of Teeworlds
+DDraceNetwork (DDNet) is an actively maintained version of DDRace,
+a Teeworlds modification with a unique cooperative gameplay.
+Help each other play through custom maps with up to 64 players,
+compete against the best in international tournaments, design your
+own maps, or run your own server.
 
 
 %package        data
