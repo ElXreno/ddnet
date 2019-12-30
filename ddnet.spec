@@ -14,7 +14,7 @@ Version:        12.8.1
 Release:        3%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
-License:        ASL 2.0 and CC-BY-SA
+License:        ASL 2.0 and CC-BY-SA 3.0
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 
@@ -47,6 +47,9 @@ BuildRequires:  zlib-devel
 
 Requires:       hicolor-icon-theme
 Requires:       %{name}-data = %{version}-%{release}
+
+Provides:       bundled(dejavu-sans-cjkname-fonts)
+Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
 
 
 %description
