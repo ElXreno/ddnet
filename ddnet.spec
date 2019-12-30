@@ -14,7 +14,7 @@ Version:        12.8.1
 Release:        4%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
-License:        ASL 2.0 and CC-BY-SA
+License:        zlib and CC-BY-SA and ASL 2.0 and MIT and Public Domain and BSD
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 
