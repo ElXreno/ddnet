@@ -144,10 +144,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_mandir}/man.6/DDNet.6*
 %{_bindir}/DDNet
 %{_libdir}/%{name}/
+%{_datadir}/applications/%{name}.desktop
 
 %files data
 %{_datadir}/%{name}/
-%{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %files server
