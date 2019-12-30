@@ -11,10 +11,10 @@
 
 Name:           ddnet
 Version:        12.8.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
-License:        ASL 2.0 and CC-BY-SA 3.0
+License:        ASL 2.0 and CC-BY-SA
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 
@@ -108,6 +108,10 @@ CMAKE3_EXTRA_FLAGS="${CMAKE3_EXTRA_FLAGS} -GNinja"
 %make_install
 %endif
 
+# Install man pages...
+install -Dp -m 0644 man/DDNet.6 %{buildroot}%{_mandir}/man.6/DDNet.6
+install -Dp -m 0644 man/DDNet-Server.6 %{buildroot}%{_mandir}/man.6/DDNet-Server.6
+
 
 %check
 %if %{with ninja_build}
@@ -120,7 +124,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
 %license license.txt
-%doc README.md man/DDNet.6
+%doc README.md
+%{_mandir}/man.6/DDNet.6*
 %{_bindir}/DDNet
 %{_libdir}/%{name}/
 
@@ -131,11 +136,15 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files server
 %license license.txt
-%doc README.md man/DDNet-Server.6
+%doc README.md
+%{_mandir}/man.6/DDNet-Server.6*
 %{_bindir}/DDNet-Server
 
 
 %changelog
+* Mon Dec 30 2019 ElXreno <elxreno@gmail.com> - 12.8.1-4
+- Fixed man pages and license
+
 * Mon Dec 30 2019 ElXreno <elxreno@gmail.com> - 12.8.1-3
 - Ninja build
 
