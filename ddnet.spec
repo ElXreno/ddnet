@@ -17,6 +17,7 @@ Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        zlib and CC-BY-SA and ASL 2.0 and MIT and Public Domain and BSD
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
+### TODO: Provide AppData manifest
 
 Patch1:         0001_ddnet_Disabled-network-lookup-test.patch
 
