@@ -71,8 +71,9 @@ touch CMakeLists.txt
 
 %build
 %cmake3 \
-    -DAUTOUPDATE=OFF \
-    -DPREFER_BUNDLED_LIBS=OFF
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DPREFER_BUNDLED_LIBS=OFF \
+    -DAUTOUPDATE=OFF
 %make_build
 
 
