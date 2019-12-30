@@ -71,6 +71,8 @@ own maps, or run your own server.
 Summary:        Data files for %{name}
 
 Requires:       %{name} = %{version}-%{release}
+Requires:       hicolor-icon-theme
+
 BuildArch:      noarch
 
 %description    data
@@ -101,6 +103,7 @@ CMAKE3_EXTRA_FLAGS=""
 CMAKE3_EXTRA_FLAGS="${CMAKE3_EXTRA_FLAGS} -GNinja"
 %endif
 
+### TODO: Add mysql support
 %cmake ${CMAKE3_EXTRA_FLAGS} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPREFER_BUNDLED_LIBS=OFF \
