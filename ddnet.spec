@@ -17,11 +17,13 @@ Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        zlib and CC-BY-SA and ASL 2.0 and MIT and Public Domain and BSD
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
-### TODO: Provide AppData manifest
 
 Patch1:         0001_ddnet_Disabled-network-lookup-test.patch
+### FIXME | https://github.com/ddnet/ddnet/pull/2021
+Patch2:         0002-pull-request-2021.patch
 
 BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
 
 %if %{with ninja_build}
 BuildRequires:  ninja-build
@@ -137,15 +139,19 @@ install -Dp -m 0644 man/DDNet-Server.6 %{buildroot}%{_mandir}/man.6/DDNet-Server
 %make_build run_tests
 %endif
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %files
 %license license.txt
 %doc README.md
 %{_mandir}/man.6/DDNet.6*
+
 %{_bindir}/DDNet
 %{_libdir}/%{name}/
+
 %{_datadir}/applications/%{name}.desktop
+%{_metainfodir}/*.appdata.xml
 
 %files data
 %{_datadir}/%{name}/
@@ -155,6 +161,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %license license.txt
 %doc README.md
 %{_mandir}/man.6/DDNet-Server.6*
+
 %{_bindir}/DDNet-Server
 
 
