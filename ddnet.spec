@@ -1,7 +1,7 @@
-### Enable LTO
+# Enable LTO
 %bcond_without lto
 
-### Enable Ninja build
+# Enable Ninja build
 %bcond_without ninja_build
 
 %if %{with lto}
@@ -57,8 +57,9 @@ Requires:       %{name}-data = %{version}-%{release}
 Provides:       bundled(dejavu-sans-cjkname-fonts)
 Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
 
-# TODO: Unbundle
+# Nothing provides json.c
 Provides:       bundled(json-parser)
+# Nothing provides md5.{c,h}
 Provides:       bundled(md5)
 
 
