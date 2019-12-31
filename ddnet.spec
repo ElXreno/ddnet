@@ -111,7 +111,8 @@ CMAKE3_EXTRA_FLAGS="${CMAKE3_EXTRA_FLAGS} -GNinja"
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPREFER_BUNDLED_LIBS=OFF \
     -DWEBSOCKETS=ON \
-    -DAUTOUPDATE=OFF
+    -DAUTOUPDATE=OFF \
+    .
 
 %if %{with ninja_build}
 %ninja_build
