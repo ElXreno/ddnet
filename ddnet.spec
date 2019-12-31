@@ -39,7 +39,6 @@ BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(ogg)
-BuildRequires:  pkgconfig(libwebsockets)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
@@ -108,10 +107,10 @@ CMAKE3_EXTRA_FLAGS="${CMAKE3_EXTRA_FLAGS} -GNinja"
 %endif
 
 ### TODO: Add mysql support
+### WebSockets disable because it freezes all GUI | https://github.com/ddnet/ddnet/issues/1900
 %cmake ${CMAKE3_EXTRA_FLAGS} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPREFER_BUNDLED_LIBS=OFF \
-    -DWEBSOCKETS=ON \
     -DAUTOUPDATE=OFF \
     .
 
@@ -170,6 +169,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %changelog
 * Tue Dec 31 2019 ElXreno <elxreno@gmail.com> - 12.8.1-5
 - Added AppData manifest
+- Disabled websockets
 
 * Mon Dec 30 2019 ElXreno <elxreno@gmail.com> - 12.8.1-4
 - Fixed man pages and license
