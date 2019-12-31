@@ -11,7 +11,7 @@
 
 Name:           ddnet
 Version:        12.8.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 License:        zlib and CC-BY-SA and ASL 2.0 and MIT and Public Domain and BSD
@@ -168,6 +168,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %changelog
+* Tue Dec 31 2019 ElXreno <elxreno@gmail.com> - 12.8.1-5
+- Added AppData manifest
+
 * Mon Dec 30 2019 ElXreno <elxreno@gmail.com> - 12.8.1-4
 - Fixed man pages and license
 
