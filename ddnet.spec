@@ -15,30 +15,30 @@ Release:        5%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 #
-# zlib/libpng license Aladdin Free Public License
-# -----------------------------------------------
+# zlib
+# --------------------------------------
 # src/engine/external/md5/
 #
-# Creative Commons Attribution-ShareAlike Public License (v3.0)
-# -----------------------------------------------
+# CC-BY-SA
+# --------------------------------------
 # data/languages/
 # data/fonts/DejaVuSansCJKName.ttf
 # data/fonts/DejavuWenQuanYiMicroHei.ttf
 #
-# Apache License (v2.0)
-# -----------------------------------------------
+# ASL 2.0
+# --------------------------------------
 # data/
 #
-# Expat License
-# -----------------------------------------------
+# MIT
+# --------------------------------------
 # man/
 #
-# *No copyright* Public domain
-# -----------------------------------------------
+# Public domain
+# --------------------------------------
 # src/base/hash_libtomcrypt.c
 #
-# BSD 2-clause "Simplified" License
-# -----------------------------------------------
+# BSD
+# --------------------------------------
 # src/engine/external/json-parser/
 #
 
