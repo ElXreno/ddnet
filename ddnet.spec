@@ -18,9 +18,11 @@ License:        zlib and CC-BY-SA and ASL 2.0 and MIT and Public Domain and BSD
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 
+# Disable network lookup test because without internet access tests not pass
 Patch1:         0001_ddnet_Disabled-network-lookup-test.patch
-### FIXME | https://github.com/ddnet/ddnet/pull/2021
-Patch2:         0002-pull-request-2021.patch
+# FIXME | Add AppData manifest
+# * https://github.com/ddnet/ddnet/pull/2021
+Patch2:         https://github.com/ddnet/ddnet/pull/2021.patch#/0002-add-appdata-manifest.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
@@ -57,9 +59,9 @@ Provides:       bundled(dejavu-sans-cjkname-fonts)
 Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
 
 # Nothing provides json.c
-Provides:       bundled(json-parser)
+Provides:       bundled(json-parser) = 1.1.0
 # Nothing provides md5.{c,h}
-Provides:       bundled(md5)
+Provides:       bundled(md5) = 1.6
 
 
 %description
@@ -98,6 +100,8 @@ touch CMakeLists.txt
 # Remove bundled stuff except md5...
 rm -rf src/engine/external/{glew,pnglite,wavpack,zlib}
 
+mkdir -p %{_target_platform}
+
 
 %build
 CMAKE3_EXTRA_FLAGS=""
@@ -106,26 +110,28 @@ CMAKE3_EXTRA_FLAGS=""
 CMAKE3_EXTRA_FLAGS="${CMAKE3_EXTRA_FLAGS} -GNinja"
 %endif
 
-### TODO: Add mysql support
-### WebSockets disable because it freezes all GUI | https://github.com/ddnet/ddnet/issues/1900
+# TODO: Add mysql support
+# WebSockets disable because it freezes all GUI | https://github.com/ddnet/ddnet/issues/1900
+pushd %{_target_platform}
 %cmake ${CMAKE3_EXTRA_FLAGS} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPREFER_BUNDLED_LIBS=OFF \
     -DAUTOUPDATE=OFF \
-    .
+    ..
+popd
 
 %if %{with ninja_build}
-%ninja_build
+%ninja_build -C %{_target_platform}
 %else
-%make_build
+%make_build -C %{_target_platform}
 %endif
 
 
 %install
 %if %{with ninja_build}
-%ninja_install
+%ninja_install -C %{_target_platform}
 %else
-%make_install
+%make_install -C %{_target_platform}
 %endif
 
 # Install man pages...
@@ -135,9 +141,9 @@ install -Dp -m 0644 man/DDNet-Server.6 %{buildroot}%{_mandir}/man.6/DDNet-Server
 
 %check
 %if %{with ninja_build}
-%ninja_build run_tests
+%ninja_build run_tests -C %{_target_platform}
 %else
-%make_build run_tests
+%make_build run_tests -C %{_target_platform}
 %endif
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
