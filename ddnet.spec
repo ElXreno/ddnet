@@ -14,6 +14,34 @@ Version:        12.8.1
 Release:        5%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
+#
+# zlib/libpng license Aladdin Free Public License
+# -----------------------------------------------
+# src/engine/external/md5/
+#
+# Creative Commons Attribution-ShareAlike Public License (v3.0)
+# -----------------------------------------------
+# data/languages/
+# data/fonts/DejaVuSansCJKName.ttf
+# data/fonts/DejavuWenQuanYiMicroHei.ttf
+#
+# Apache License (v2.0)
+# -----------------------------------------------
+# data/
+#
+# Expat License
+# -----------------------------------------------
+# man/
+#
+# *No copyright* Public domain
+# -----------------------------------------------
+# src/base/hash_libtomcrypt.c
+#
+# BSD 2-clause "Simplified" License
+# -----------------------------------------------
+# src/engine/external/json-parser/
+#
+
 License:        zlib and CC-BY-SA and ASL 2.0 and MIT and Public Domain and BSD
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
