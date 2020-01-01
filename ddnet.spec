@@ -11,7 +11,7 @@
 
 Name:           ddnet
 Version:        12.8.1
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 #
@@ -130,7 +130,7 @@ Standalone server for %{name}.
 touch CMakeLists.txt
 
 # Remove bundled stuff...
-rm -rf src/engine/external/{glew,json-parser,md5,pnglite,wavpack,zlib}
+rm -rf src/engine/external
 
 mkdir -p %{_target_platform}
 
@@ -205,6 +205,12 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %changelog
+* Wed Jan 01 2020 ElXreno <elxreno@gmail.com> - 12.8.1-6
+- Applied patch by @atim
+- Added license breakdown explanation
+- Unbundled md5 and json-parser
+- Removed hicolor-icon-theme from main package
+
 * Tue Dec 31 2019 ElXreno <elxreno@gmail.com> - 12.8.1-5
 - Added AppData manifest
 - Disabled websockets
