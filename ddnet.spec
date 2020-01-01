@@ -86,7 +86,7 @@ Requires:       %{name}-data = %{version}-%{release}
 Provides:       bundled(dejavu-sans-cjkname-fonts)
 Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
 
-# Nothing provides json.c
+# Cannot unbundle because included library is patched
 Provides:       bundled(json-parser) = 1.1.0
 # Nothing provides md5.{c,h}
 Provides:       bundled(md5) = 1.6
