@@ -51,6 +51,8 @@ Patch1:         0001_ddnet_Disabled-network-lookup-test.patch
 # FIXME | Add AppData manifest
 # * https://github.com/ddnet/ddnet/pull/2021
 Patch2:         https://github.com/ddnet/ddnet/pull/2021.patch#/0002-add-appdata-manifest.patch
+# Unbundle md5
+Patch3:         0003-Unbundle-md5.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
@@ -86,10 +88,9 @@ Requires:       %{name}-data = %{version}-%{release}
 Provides:       bundled(dejavu-sans-cjkname-fonts)
 Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
 
-# Cannot unbundle because included library is patched
+# FIXME: Cannot unbundle because included library is patched
+# * https://github.com/ddnet/ddnet/issues/2022
 Provides:       bundled(json-parser) = 1.1.0
-# Nothing provides md5.{c,h}
-Provides:       bundled(md5) = 1.6
 
 
 %description
@@ -125,8 +126,8 @@ Standalone server for %{name}.
 %autosetup -S git
 touch CMakeLists.txt
 
-# Remove bundled stuff except md5...
-rm -rf src/engine/external/{glew,pnglite,wavpack,zlib}
+# Remove bundled stuff except json-parser...
+rm -rf src/engine/external/{glew,md5,pnglite,wavpack,zlib}
 
 mkdir -p %{_target_platform}
 
