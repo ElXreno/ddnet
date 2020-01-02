@@ -47,12 +47,19 @@ URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Disable network lookup test because without internet access tests not pass
-Patch1:         0001_ddnet_Disabled-network-lookup-test.patch
-# FIXME | Add AppData manifest
-# * https://github.com/ddnet/ddnet/pull/2021
-Patch2:         https://github.com/ddnet/ddnet/pull/2021.patch#/0002-add-appdata-manifest.patch
+Patch1:         0001-disabled-network-lookup-test.patch
+
 # Unbundle md5
-Patch3:         0003-Unbundle-md5.patch
+Patch2:         0002-unbundle-md5.patch
+
+# Move ddnet custom json code out and unbundle json-parser
+# * https://github.com/ddnet/ddnet/issues/2022
+Patch3:         https://github.com/ddnet/ddnet/commit/017b8c3.patch#/0003-move-ddnet-custom-json-code-out-of-external-director.patch
+Patch4:         0004-unbundled-json-parser.patch
+
+# Add AppData manifest
+# * https://github.com/ddnet/ddnet/pull/2021
+Patch5:         https://github.com/ddnet/ddnet/pull/2021.patch#/0005-add-appdata-manifest.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
@@ -69,6 +76,7 @@ BuildRequires:  python
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(json-parser)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
@@ -81,16 +89,11 @@ BuildRequires:  pkgconfig(zlib)
 # pkgconfig not available
 BuildRequires:  pnglite-devel
 
-Requires:       hicolor-icon-theme
 Requires:       %{name}-data = %{version}-%{release}
 
 # https://github.com/ddnet/ddnet/issues/2019
 Provides:       bundled(dejavu-sans-cjkname-fonts)
 Provides:       bundled(dejavu-wenquanyi-micro-hei-fonts)
-
-# FIXME: Cannot unbundle because included library is patched
-# * https://github.com/ddnet/ddnet/issues/2022
-Provides:       bundled(json-parser) = 1.1.0
 
 
 %description
@@ -126,8 +129,8 @@ Standalone server for %{name}.
 %autosetup -S git
 touch CMakeLists.txt
 
-# Remove bundled stuff except json-parser...
-rm -rf src/engine/external/{glew,md5,pnglite,wavpack,zlib}
+# Remove bundled stuff...
+rm -rf src/engine/external/{glew,json-parser,md5,pnglite,wavpack,zlib}
 
 mkdir -p %{_target_platform}
 

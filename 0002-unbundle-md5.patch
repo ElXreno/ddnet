@@ -1,0 +1,42 @@
+From 81ca4f091a358429df7d40124b28cd0dfb0691ce Mon Sep 17 00:00:00 2001
+From: ElXreno <elxreno@gmail.com>
+Date: Wed, 1 Jan 2020 20:00:52 +0300
+Subject: [PATCH 1/2] Unbundle md5
+
+---
+ CMakeLists.txt | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 9588d8100..50467b87c 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -516,15 +516,8 @@ endif()
+ set_glob(DEP_JSON_SRC GLOB src/engine/external/json-parser json.c json.h)
+ add_library(json EXCLUDE_FROM_ALL OBJECT ${DEP_JSON_SRC})
+ 
+-set_glob(DEP_MD5_SRC GLOB src/engine/external/md5 md5.c md5.h)
+-add_library(md5 EXCLUDE_FROM_ALL OBJECT ${DEP_MD5_SRC})
+-
+-list(APPEND TARGETS_DEP json md5)
++list(APPEND TARGETS_DEP json)
+ set(DEP_JSON $<TARGET_OBJECTS:json>)
+-set(DEP_MD5)
+-if(NOT CRYPTO_FOUND)
+-  set(DEP_MD5 $<TARGET_OBJECTS:md5>)
+-endif()
+ 
+ ########################################################################
+ # COPY DATA AND DLLS
+@@ -753,7 +746,7 @@ set(GAME_GENERATED_SHARED
+   src/game/generated/protocol.h
+ )
+ 
+-set(DEPS ${DEP_JSON} ${DEP_MD5} ${ZLIB_DEP})
++set(DEPS ${DEP_JSON} ${ZLIB_DEP})
+ 
+ # Libraries
+ set(LIBS
+-- 
+2.24.1
+
