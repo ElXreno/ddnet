@@ -37,12 +37,9 @@ Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 # --------------------------------------
 # src/base/hash_libtomcrypt.c
 #
-# BSD
-# --------------------------------------
-# src/engine/external/json-parser/
-#
 
-License:        zlib and CC-BY-SA and ASL 2.0 and MIT and Public Domain and BSD
+
+License:        zlib and CC-BY-SA and ASL 2.0 and MIT and Public Domain
 URL:            https://ddnet.tw/
 Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
 
@@ -167,8 +164,8 @@ popd
 %endif
 
 # Install man pages...
-install -Dp -m 0644 man/DDNet.6 %{buildroot}%{_mandir}/man.6/DDNet.6
-install -Dp -m 0644 man/DDNet-Server.6 %{buildroot}%{_mandir}/man.6/DDNet-Server.6
+install -Dp -m 0644 man/DDNet.6 %{buildroot}%{_mandir}/man6/DDNet.6
+install -Dp -m 0644 man/DDNet-Server.6 %{buildroot}%{_mandir}/man6/DDNet-Server.6
 
 
 %check
@@ -184,7 +181,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %files
 %license license.txt
 %doc README.md
-%{_mandir}/man.6/DDNet.6*
+%{_mandir}/man6/DDNet.6*
 
 %{_bindir}/DDNet
 %{_libdir}/%{name}/
@@ -199,7 +196,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %files server
 %license license.txt
 %doc README.md
-%{_mandir}/man.6/DDNet-Server.6*
+%{_mandir}/man6/DDNet-Server.6*
 
 %{_bindir}/DDNet-Server
 
