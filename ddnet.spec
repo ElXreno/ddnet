@@ -133,16 +133,11 @@ mkdir -p %{_target_platform}
 
 
 %build
-CMAKE3_EXTRA_FLAGS=""
-
-%if %{with ninja_build}
-CMAKE3_EXTRA_FLAGS="${CMAKE3_EXTRA_FLAGS} -GNinja"
-%endif
-
 # TODO: Add mysql support
 # WebSockets disable because it freezes all GUI | https://github.com/ddnet/ddnet/issues/1900
 pushd %{_target_platform}
-%cmake ${CMAKE3_EXTRA_FLAGS} \
+%cmake \
+    %{?with_ninja_build: -GNinja} \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPREFER_BUNDLED_LIBS=OFF \
     -DAUTOUPDATE=OFF \
