@@ -136,7 +136,6 @@ mkdir -p %{_target_platform}
 pushd %{_target_platform}
 %cmake \
     %{?with_ninja_build: -GNinja} \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DPREFER_BUNDLED_LIBS=OFF \
     -DAUTOUPDATE=OFF \
     ..
