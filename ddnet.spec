@@ -5,7 +5,7 @@
 %bcond_without ninja_build
 
 %if %{with lto}
-%global optflags        %{optflags} -flto
+%global optflags        %{optflags} -flto=auto
 %global build_ldflags   %{build_ldflags} -flto
 %endif
 
