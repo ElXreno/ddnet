@@ -187,8 +187,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 
 %files server
-%license license.txt
-%doc README.md
 %{_mandir}/man6/DDNet-Server.6*
 
 %{_bindir}/DDNet-Server
