@@ -66,7 +66,7 @@ BuildRequires:  ninja-build
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
-BuildRequires:  python
+BuildRequires:  python3
 
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(glew)
