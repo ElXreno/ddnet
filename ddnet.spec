@@ -10,8 +10,8 @@
 %endif
 
 Name:           ddnet
-Version:        12.8.1
-Release:        6%{?dist}
+Version:        12.9
+Release:        1%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 #
@@ -47,16 +47,10 @@ Source0:        https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{vers
 Patch1:         0001-disabled-network-lookup-test.patch
 
 # Unbundle md5
-Patch2:         0002-unbundle-md5.patch
+Patch2:         0002-unbundled-md5.patch
 
-# Move ddnet custom json code out and unbundle json-parser
-# * https://github.com/ddnet/ddnet/issues/2022
-Patch3:         https://github.com/ddnet/ddnet/commit/017b8c3.patch#/0003-move-ddnet-custom-json-code-out-of-external-director.patch
-Patch4:         0004-unbundled-json-parser.patch
-
-# Add AppData manifest
-# * https://github.com/ddnet/ddnet/pull/2021
-Patch5:         https://github.com/ddnet/ddnet/pull/2021.patch#/0005-add-appdata-manifest.patch
+# Unbundle json-parser
+Patch4:         0003-unbundled-json-parser.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
@@ -197,6 +191,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %changelog
+* Thu Feb 13 2020 ElXreno <elxreno@gmail.com> - 12.9-1
+- Updated to version 12.9
+
 * Wed Jan 01 2020 ElXreno <elxreno@gmail.com> - 12.8.1-6
 - Applied patch by @atim
 - Added license breakdown explanation
