@@ -10,8 +10,8 @@
 %endif
 
 Name:           ddnet
-Version:        12.9
-Release:        2%{?dist}
+Version:        12.9.1
+Release:        1%{?dist}
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 
 #
@@ -54,7 +54,7 @@ Patch3:         0003-unbundled-json-parser.patch
 
 # Fix build for Rawhide
 # PR: https://github.com/ddnet/ddnet/pull/2065
-Patch4:         0004-fix-build-for-rawhide.patch
+#Patch4:         0004-fix-build-for-rawhide.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
@@ -192,6 +192,9 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 
 %changelog
+* Fri Feb 14 2020 ElXreno <elxreno@gmail.com> - 12.9.1-1
+- Updated to version 12.9.1
+
 * Thu Feb 13 2020 ElXreno <elxreno@gmail.com> - 12.9-2
 - Fixed build error for Rawhide
 
