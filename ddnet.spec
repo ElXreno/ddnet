@@ -52,10 +52,6 @@ Patch2:         0002-unbundled-md5.patch
 # Unbundle json-parser
 Patch3:         0003-unbundled-json-parser.patch
 
-# Fix build for Rawhide
-# PR: https://github.com/ddnet/ddnet/pull/2065
-#Patch4:         0004-fix-build-for-rawhide.patch
-
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 
